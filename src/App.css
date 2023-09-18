@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+:root {
+  --h1: 2.5rem;
+  --h2: 1rem;
+  --h3: 1rem;
+  --h4: 1rem;
+  --h5: 1rem;
+  --h6: 1rem;
+  --p: 1rem;
+  --a: 1rem;
+  --btn: 1rem;
+  --small: 1.25rem;
+
+  --fw-med: 400;
+  --fw-bold: 700;
+
+  --clr-neutral: hsl(34, 75%, 80%);
+  --clr-primary: hsl(37, 100%, 6%);
+  --clr-secondary: hsl(214, 75%, 80%);
+
+  --sm: 0.5em;
+  --md: 1em;
+  --lg: 1.5em;
+  --xl: 2em;
+  --2xl: 6em;
+  --3xl: 12em;
+
+  --max-width: 50rem;
+  --grid-column: 6; /* how many columns on grid */
+  --grid-gap: 1rem;
+}
+
+@media (min-width: 50rem) {
+  :root {
+    --h1: 2rem;
+    --h2: 2rem;
+    --h3: 2rem;
+    --h4: 2rem;
+    --h5: 2rem;
+    --h6: 2rem;
+    --p: 2rem;
+    --a: 2rem;
+    --btn: 2rem;
+    --class: 1rem;
+  }
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+h1 {
+  font-size: var(--h1);
+}
+h2 {
+  font-size: var(--h2);
+}
+h3 {
+  font-size: var(--h3);
+}
+h4 {
+  font-size: var(--h4);
+}
+h5 {
+  font-size: var(--h5);
+}
+h6 {
+  font-size: var(--h6);
+}
+p {
+  font-size: var(--p);
+}
+a {
+  font-size: var(--a);
+}
+.btn {
+  font-size: var(--btn);
+}
+.small {
+  font-size: var(--small);
+}
+.bold {
+  font-weight: var(--fw-bold);
+}
+
+.container {
+  --xpadding: 1rem;
+  max-width: Min(var(--max-width), 100% - var(--xpadding));
+  margin-inline: auto;
+}
+
+.grid {
+  grid-column: 2 / span var(--grid-column);
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--grid-gap);
+}
+.flex {
+  --gap: var(--md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+@media (min-width: 50rem) {
+  .flex-row {
+    flex-direction: row;
+  }
+  .col-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .col-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .col-4 {
+    grid-auto-flow: unset;
+    grid-template-columns: repeat(auto-fit, Minmax(10rem, 1fr));
+  }
+  .col-auto {
+    grid-auto-flow: unset;
+    grid-template-columns: repeat(auto-fit, Minmax(20rem, 1fr));
+  }
+}
+body {
+  background-color: var(--clr-neutral);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: var(--fw-med);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Roboto Mono", monospace;
+  color: var(--clr-primary);
+}
+
+.home {
+  justify-content: center;
+  width: max-content;
+  text-align: center;
+  position: relative;
+  gap: var(--sm);
+  min-height: 100vh;
+}
+.home__title--container {
+  align-self: center;
+}
+.home__title {
+  position: relative;
+}
+.home__title::before,
+.home__title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.home__title::after {
+  content: "";
+  width: 0.125em;
+  background-color: var(--clr-primary);
+  animation: typewriter 3s steps(13) 500ms forwards,
+    blink 1000ms steps(13) infinite;
+}
+.home__title::before {
+  background-color: var(--clr-neutral);
+  animation: typewriter 3s steps(13) 500ms forwards;
+}
+.home__subtitle {
+  opacity: 0;
+  animation: fadeIn 2s ease 3.5s forwards;
+}
+
+.home__view-more {
+  margin-top: auto;
+  color: var(--clr-primary);
+  opacity: 0;
+  animation: fadeIn 2s ease 4s forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
